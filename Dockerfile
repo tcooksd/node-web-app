@@ -15,5 +15,7 @@ RUN npm install
 # Bundle app source
 COPY . .
 
+TAG tcooksd858/node-web-app:1.01 
+
 EXPOSE 8080
 CMD [ "npm", "start" ]

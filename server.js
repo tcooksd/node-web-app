@@ -15,5 +15,5 @@ var www = http.createServer(handleRequest);
 www.listen(8080,function () {
     startTime = new Date();;
     host = process.env.HOSTNAME;
-    console.log ("Container App Started At:",startTime, "| Running On: " ,host, "\n" );
+    console.log ("Tim Cook App Started At:",startTime, "| Running On: " ,host, "\n" );
 });
