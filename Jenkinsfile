@@ -1,6 +1,6 @@
 import groovy.json.JsonOutput 
 
-node {
+node ('docker-slave') {
 
     def app
 
