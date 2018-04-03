@@ -67,7 +67,7 @@ Map<?, ?> postBody = [ "image": "/assets/apps/template.png",
                           "code": "docker-1.7-single",
                           "id": 217
                         ],
-                        "name": "$[account]-$[cloudCode]-$[type]-$[sequence]",
+                        "name": "\$[account]-\$[cloudCode]-\$[type]-\$[sequence]",
                         "allowExisting": true
                       ],
                       "volumes": [
