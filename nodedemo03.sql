@@ -9,4 +9,5 @@ create table person (
         primary key (id)
 );
 
-insert into `person` VALUES (1,'Tim','Cook\n'),(2,'Joe','Smith\n');
+insert into `person` VALUES ( 1,'Juan','Valdez\n'),
+(2,'Joe','Smith\n');
