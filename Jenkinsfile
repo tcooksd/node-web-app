@@ -172,4 +172,3 @@ Map<?, ?> postBody = [ "image": "/assets/apps/template.png",
 
     }
 
-}
