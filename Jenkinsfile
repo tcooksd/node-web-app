@@ -8,14 +8,19 @@ node {
         /* Let's make sure we have the repository cloned to our workspace */
 
         checkout scm
+
+        docker.withServer('tcp://10.30.20.110:2376', '0babff4c-d42a-4f2d-81a8-245dcf679f15') {
+		app = docker.build("tadamhicks/demo_app")
+          }
+      }
     }
 
-    stage('Build image') {
+    /* stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
         app = docker.build("tadamhicks/demo_app")
-    }
+    } /* 
 
     stage('Test image') {
         /* Ideally, we would run a test framework against our image.
