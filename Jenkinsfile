@@ -13,7 +13,6 @@ node {
 		app = docker.build("tadamhicks/demo_app")
           }
       }
-    }
 
 
     stage('Test image') {
