@@ -10,7 +10,7 @@ node {
         checkout scm
 
         docker.withServer('tcp://10.30.20.127:4243', '') {
-		app = docker.build('tadamhicks/demo_app')
+		app = docker.build('tcooksd858/node-web-app')
           }
       }
 
