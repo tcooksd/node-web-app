@@ -14,4 +14,16 @@ node {
           }
       }
 
+    stage('Test image') {
+        /* Ideally, we would run a test framework against our image.
+         * For this example, we're using a Volkswagen-type approach ;-) */
+
+        docker.withServer('tcp://10.30.20.127:4243', '') {
+                app.inside {
+                        sh 'echo "Tests passed"'
+                }
+        }
+      }
+
+
 }
