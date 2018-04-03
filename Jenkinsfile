@@ -133,7 +133,7 @@ Map<?, ?> postBody = [ "image": "/assets/apps/template.png",
                           "code": "mysql-5.7-single",
                           "id": 90
                         ],
-                        "name": "$[account]-$[cloudCode]-$[type]-$[sequence]",
+                        "name": "\$[account]-\$[cloudCode]-\$[type]-\$[sequence]",
                         "allowExisting": true
                       ],
                       "volumes": [
