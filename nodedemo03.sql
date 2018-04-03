@@ -11,3 +11,5 @@ create table person (
 
 insert into `person` VALUES ( 1,'Juan','Valdez\n'),
 (2,'Joe','Smith\n');
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'password!' WITH GRANT OPTION;

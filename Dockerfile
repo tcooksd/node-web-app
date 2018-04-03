@@ -17,5 +17,4 @@ RUN npm install mysql
 COPY . .
 
 
-EXPOSE 8080
 CMD [ "npm", "start" ]
