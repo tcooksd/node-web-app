@@ -1,4 +1,4 @@
-FROM node
+FROM node:carbon
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -9,6 +9,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 RUN npm install
+RUN npm install mysql
 # If you are building your code for production
 # RUN npm install --only=production
 

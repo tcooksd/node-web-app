@@ -22,7 +22,7 @@ if [ $? -ne "0" ]
     exit 5
 fi 
 
-docker run -it  -p 49160:8080 -d tcooksd858/node-web-app
+docker run -it  --env DATABASE=10.0.0.214 -p 49160:8080 -d tcooksd858/node-web-app
 if [ $? -ne "0" ]
   then 
     exit 6
