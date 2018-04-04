@@ -1,4 +1,5 @@
 import groovy.json.JsonOutput 
+@Library('morpheusApp') _
 
 node ('docker-slave') {
 
