@@ -1,5 +1,4 @@
 import groovy.json.JsonOutput 
-def morpheusApp =  new org.tadamhicks();
 
 node ('docker-slave') {
 
