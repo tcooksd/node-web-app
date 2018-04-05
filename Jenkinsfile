@@ -18,7 +18,7 @@ node ('docker-slave') {
          *
          *  */
 
-            withCredentials([string(credentialsId: 'morphauthdemo', variable: 'bearer')]) {
+            withCredentials([string(credentialsId: 'newtoken', variable: 'bearer')]) {
             String morpheusUrl = 'https://demo.morpheusdata.com/api/app-templates'
 
             Map<?, ?> postBody = ["name": "tcook01","image": "/assets/apps/template.png"]
