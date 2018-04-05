@@ -25,7 +25,7 @@ node ('docker-slave') {
 
             Map<?, ?> postBody = ["name":"nodeapp","type":"docker"]
 
-           morpheusApp.buildAp(morpheusUrl, postBody, "${bearer}")
+           morpheusApp.buildApp(morpheusUrl, postBody, "${bearer}")
         }
     }
 
