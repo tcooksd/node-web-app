@@ -26,7 +26,7 @@ node ('docker-slave') {
             Map<?, ?> postBody = ["name":"nodeapp","type":"docker"]
 
            morpheusApp.buildApp(morpheusUrl, postBody, "${bearer}")
-	   morpheus.App.echo("test from tcook") 
+	   morpheusApp.echo("test from tcook") 
         }
     }
 
