@@ -20,13 +20,16 @@ node ('docker-slave') {
          *
          *  */
 
+        def buildApp(String morpheusUrl, Map<?, ?> postBody, String bearerToken) {
+		JenkinsHttpClient http = new JenkinsHttpClient()
+		http.postJson(morpheusUrl, postBody, bearerToken)
+	}	
         withCredentials([string(credentialsId: 'morphauth', variable: 'bearer')]) {
             String morpheusUrl = 'https://sandbox.morpheusdata.com/api/apps'
 
             Map<?, ?> postBody = ["name":"nodeapp","type":"docker"]
 
-           morpheusApp.buildApp(morpheusUrl, postBody, "${bearer}")
-	   morpheusApp.echo("test from tcook") 
+           buildApp(morpheusUrl, postBody, "${bearer}")
         }
     }
 
