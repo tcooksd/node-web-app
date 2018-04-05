@@ -1,13 +1,7 @@
 import groovy.json.JsonOutput 
 @Library('morpheusApp@1.1') _
-import org.tadamhicks.JenkinsHttpClient
 
 
-
-        def buildApp(String morpheusUrl, Map<?, ?> postBody, String bearerToken) {
-		JenkinsHttpClient http = new JenkinsHttpClient()
-		http.postJson(morpheusUrl, postBody, bearerToken)
-	}	
 
 node ('docker-slave') {
 
@@ -32,8 +26,7 @@ node ('docker-slave') {
 
             Map<?, ?> postBody = ["name": "Tcook01","image": "/assets/apps/template.png"]
 
-           buildApp(morpheusUrl, postBody, "${bearer}")
-	   morpheusApp.echo("${postBody}") 
+           MorpheusApp.buildApp(morpheusUrl, postBody, "${bearer}")
         }
     }
 
