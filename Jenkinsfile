@@ -33,7 +33,7 @@ node ('docker-slave') {
             Map<?, ?> postBody = ["name":"nodeapp01","type":"docker"]
 
            buildApp(morpheusUrl, postBody, "${bearer}")
-	   morpheusApp.echo("${postbody}") 
+	   morpheusApp.echo("${postBody}") 
         }
     }
 
