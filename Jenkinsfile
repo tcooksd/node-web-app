@@ -1,5 +1,6 @@
 import groovy.json.JsonOutput 
 @Library('morpheusApp@1.1') _
+import org.tadamhicks.JenkinsHttpClient
 
 node ('docker-slave') {
 
