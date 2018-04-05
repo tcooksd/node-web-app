@@ -26,7 +26,7 @@ node ('docker-slave') {
 
             Map<?, ?> postBody = ["name": "Tcook01","image": "/assets/apps/template.png"]
 
-           MorpheusApp.buildApp(morpheusUrl, postBody, "${bearer}")
+            morpheusApp.buildApp(morpheusUrl, postBody, "${bearer}")
         }
     }
 
