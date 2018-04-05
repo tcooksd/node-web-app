@@ -30,7 +30,7 @@ node ('docker-slave') {
         withCredentials([string(credentialsId: 'morphauth', variable: 'bearer')]) {
             String morpheusUrl = 'https://sandbox.morpheusdata.com/api/apps'
 
-            Map<?, ?> postBody = "{"name":"nodeapp01","type":"morpheus"}"
+            Map<?, ?> postBody = [ "image": "/assets/apps/template.png", "name": "demo_app_${env.BUILD_NUMBER}", "templateName": "A_D_A" ] 
 
            buildApp(morpheusUrl, postBody, "${bearer}")
 	   morpheusApp.echo("${postBody}") 
