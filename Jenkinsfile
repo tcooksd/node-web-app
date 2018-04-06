@@ -26,7 +26,7 @@ node ('docker-slave') {
             echo morpheusApp.buildApp(morpheusUrl, postBody, "${bearer}")
             echo  "${bearer}"
 	    sh 'env > /tmp/env.txt' 
-	      for (String i : readFile('env.txt').split("\r?\n")) {
+	      for (String i : readFile('/tmp/env.txt').split("\r?\n")) {
 	        println i
         	}
         }
