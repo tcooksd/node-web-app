@@ -24,11 +24,6 @@ node ('docker-slave') {
             Map<?, ?> postBody = ["name": "tcook01","image": "/assets/apps/template.png"]
 
             echo morpheusApp.buildApp(morpheusUrl, postBody, "${bearer}")
-            echo  "${bearer}"
-	    sh 'env > /tmp/env.txt' 
-	      for (String i : readFile('/tmp/env.txt').split("\r?\n")) {
-	        println i
-        	}
         }
     }
   }
