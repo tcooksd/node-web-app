@@ -1,5 +1,6 @@
 Dockerfile
 dockerclean.sh
-
+server.js.orig
 node_modules
 npm-debug.log
+node_modules/
