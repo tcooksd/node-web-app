@@ -11,6 +11,14 @@ var con = mysql.createConnection({
   password: "password!"
 });
 
+con.connect(function(err) {
+  if (err) throw err;
+  con.query("SELECT * FROM customers", function (err, result, fields) {
+    if (err) throw err;
+    console.log(result);
+  });
+});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'NodeJS Demo',
