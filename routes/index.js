@@ -6,14 +6,16 @@ var databaseport = process.env.MYSQL_PORT;
 var hostname = process.env.HOSTNAME;
 
 var con = mysql.createConnection({
-  host: process.env.DATABASE,
+  host: database,
+  port: databaseport,
+  database: "nodedemo",
   user: "root",
   password: "password!"
 });
 
 con.connect(function(err) {
   if (err) throw err;
-  con.query("SELECT * FROM customers", function (err, result, fields) {
+  con.query("SELECT * FROM person", function (err, result, fields) {
     if (err) throw err;
     console.log(result);
   });
