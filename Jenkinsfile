@@ -38,29 +38,108 @@ node ('docker-slave') {
         }
     }
 
-    stage('Stage Dev App') {
-	   
-           withCredentials([string(credentialsId: 'morphauth', variable: 'bearer')]) {
-           String morpheusUrl = 'https://sandbox.morpheusdata.com/api/app-templates'
-  	   Map<?, ?> postBody = ["image":"/assets/apps/template.png","tiers":
-				  ["App":
-				    ["linkedTiers":[],
-				      "instances":
-					[["instance":
-					  ["name":"nodeapp","type":"docker"],
-					   "environments":
-					    ["Dev":["groups":["VMware":["clouds":["VMware":["backup":["createBackup":true],"instance":["layout":["code":"docker-1.7-single","id":217],"name":"","allowExisting":true],"volumes":[["size":3,"name":"root","rootVolume":true]],"ports":[["port":"8080","lb":"","name":"web"]],"config":["dockerImage":"tcooksd858/node-web-app","dockerImageVersion":"latest","expose":8080,"dockerRegistryId":""],"plan":["code":"container-256","id":81]]]]]]]]]],"Database":["linkedTiers":[],"instances":[["instance":["name":"mysqlapp","type":"mysql"],"environments":["Dev":["groups":["VMware":["clouds":["VMware":["backup":["createBackup":true],"instance":["layout":["code":"mysql-5.7-single","id":90],"name":"","allowExisting":true],"volumes":[["size":1,"name":"root","rootVolume":true]],"plan":["code":"container-128","id":80],"config":["rootPassword":"************"],"deployment":["versionId":42,"id":29]]]]]]]]]]],"name":"nodexpressapp." + "${env.BUILD_NUMBER}","templateImage":"","type":"morpheus","category":"APP"] 
-            echo morpheusApp.buildApp(morpheusUrl, postBody, "${bearer}")
-      }
-    }
     stage('Provision Dev App') {
         /*
          *
          *  */
 
-           withCredentials([string(credentialsId: 'morphauth', variable: 'bearer')]) {
-            String morpheusUrl = 'https://sandbox.morpheusdata.com/api/apps'
-	    Map<?, ?> postBody = ["image":"/assets/apps/template.png","tiers":["App":["linkedTiers":[],"instances":[["instance":["type":"docker","cloud":"VMware","layout":["code":"docker-1.7-single","id":217],"name":"","allowExisting":true],"backup":["createBackup":true],"volumes":[["size":3,"name":"root","rootVolume":true]],"ports":[["port":"8080","lb":"","name":"web"]],"config":["dockerImage":"tcooksd858/node-web-app","dockerImageVersion":"${env.BUILD_NUMBER}","expose":8080,"dockerRegistryId":""],"plan":["code":"container-256","id":81],"metadata":[["name":"","value":""]],"evars":[["name":"","value":""]]]]],"Database":["linkedTiers":[],"instances":[["instance":["type":"mysql","cloud":"VMware","layout":["code":"mysql-5.7-single","id":90],"name":"","allowExisting":true],"backup":["createBackup":true],"volumes":[["size":1,"name":"root","rootVolume":true]],"plan":["code":"container-128","id":80],"config":["rootPassword":"************"],"deployment":["versionId":42,"id":29],"metadata":[["name":"","value":""]],"evars":[["name":"","value":""]]]]]],"name":"testapp." + "${env.BUILD_NUMBER}" ,"templateImage":"","type":"morpheus","category":"APP","id":33,"templateName":"nodexpress","group":["id":489,"name":"VMware"],"environment":"Dev"] 
+           withCredentials([string(credentialsId: 'morphauthdemo', variable: 'bearer')]) {
+            String morpheusUrl = 'https://demo.morpheusdata.com/api/apps'
+	    Map<?, ?> postBody = [
+  "image": "https://demo.morpheusdata.com/storage/logos/uploads/AppTemplate/108/templateImage/Screen Shot 2018-04-03 at 11.12.33 PM_original.png",
+  "tiers": [
+    "App": [
+      "linkedTiers": [],
+      "instances": [
+        [
+          "instance": [
+            "type": "vmware",
+            "cloud": "VMware vCenter",
+            "layout": [
+              "code": "vmware-1.0-single",
+              "id": 348
+            ],
+            "expireDays": "1",
+            "name": "RHEL-7_5-$[sequence]",
+            "allowExisting": true,
+            "userGroup": [
+              "id": ""
+            ]
+          ],
+          "servicePlanOptions": [
+            "maxCores": 1,
+            "maxMemory": 536870912
+          ],
+          "backup": [
+            "createBackup": true
+          ],
+          "networkInterfaces": [
+            [
+              "primaryInterface": true,
+              "network": [
+                "id": "network-1"
+              ]
+            ]
+          ],
+          "volumes": [
+            [
+              "vId": 509978,
+              "size": 20,
+              "maxIOPS": null,
+              "name": "root",
+              "rootVolume": true,
+              "storageType": 1,
+              "datastoreId": "autoCluster"
+            ]
+          ],
+          "storageControllers": [],
+          "config": [
+            "template": 509978,
+            "createUser": true,
+            "vmwareResourcePoolId": "resgroup-13049",
+            "vmwareFolderId": "group-v13599",
+            "expose": 8080
+          ],
+          "plan": [
+            "code": "vm-2048",
+            "id": 147
+          ],
+          "ports": [
+            [
+              "name": "",
+              "port": "",
+              "lb": ""
+            ]
+          ],
+          "metadata": [
+            [
+              "name": "",
+              "value": ""
+            ]
+          ],
+          "evars": [
+            [
+              "name": "",
+              "value": ""
+            ]
+          ]
+        ]
+      ]
+    ]
+  ],
+  "name": "rhel-7.5-disa01",
+  "description": "DISA compliance test ",
+  "templateImage": "C:\\fakepath\\Screen Shot 2018-04-03 at 11.12.33 PM.png",
+  "category": "app",
+  "id": 108,
+  "templateName": "DISA",
+  "group": [
+    "id": 1,
+    "name": "VMware"
+  ],
+  "environment": "Demo"
+] 
+
             echo morpheusApp.buildApp(morpheusUrl, postBody, "${bearer}")
         }
     }
