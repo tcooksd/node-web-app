@@ -60,7 +60,7 @@ node ('docker-slave') {
               "id": 348
             ],
             "expireDays": "1",
-            "name": "RHEL-7_5-$[sequence]",
+            "name": "RHEL-7_5-"${env.BUILD_NUMBER}"",
             "allowExisting": true,
             "userGroup": [
               "id": ""
