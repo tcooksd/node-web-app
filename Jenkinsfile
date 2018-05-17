@@ -44,101 +44,130 @@ node ('docker-slave') {
          *  */
 
            withCredentials([string(credentialsId: 'morphauthdemo', variable: 'bearer')]) {
-            String morpheusUrl = 'https://demo.morpheusdata.com/api/apps'
+            String morpheusUrl = 'https://sandbox.morpheusdata.com/api/apps'
 	    Map<?, ?> postBody = [
-  "image": "https://demo.morpheusdata.com/storage/logos/uploads/AppTemplate/108/templateImage/Screen Shot 2018-04-03 at 11.12.33 PM_original.png",
+
+ "image": "/assets/apps/template.png",
   "tiers": [
     "App": [
       "linkedTiers": [],
       "instances": [
         [
           "instance": [
-            "type": "vmware",
-            "cloud": "VMware vCenter",
-            "layout": [
-              "code": "vmware-1.0-single",
-              "id": 348
-            ],
-            "expireDays": "1",
-            "name": "RHEL-7_5-" + "${env.BUILD_NUMBER}",
-            "allowExisting": true,
-            "userGroup": [
-              "id": ""
-            ]
+            "name": "nodeapp",
+            "type": "docker"
           ],
-          "servicePlanOptions": [
-            "maxCores": 1,
-            "maxMemory": 536870912
-          ],
-          "backup": [
-            "createBackup": true
-          ],
-          "networkInterfaces": [
-            [
-              "primaryInterface": true,
-              "network": [
-                "id": "network-1"
+          "environments": [
+            "Dev": [
+              "groups": [
+                "VMware": [
+                  "clouds": [
+                    "VMware": [
+                      "backup": [
+                        "createBackup": true
+                      ],
+                      "instance": [
+                        "layout": [
+                          "code": "docker-1.7-single",
+                          "id": 217
+                        ],
+                        "name": "",
+                        "allowExisting": true
+                      ],
+                      "volumes": [
+                        [
+                          "size": 3,
+                          "name": "root",
+                          "rootVolume": true
+                        ]
+                      ],
+                      "ports": [
+                        [
+                          "port": "8080",
+                          "lb": "",
+                          "name": "web"
+                        ]
+                      ],
+                      "config": [
+                        "dockerImage": "tcooksd858/node-web-app",
+                        "dockerImageVersion": "latest",
+                        "expose": 8080,
+                        "dockerRegistryId": ""
+                      ],
+                      "plan": [
+                        "code": "container-256",
+                        "id": 81
+                      ]
+                    ]
+                  ]
+                ]
               ]
             ]
+          ]
+        ]
+      ]
+    ],
+    "Database": [
+      "linkedTiers": [],
+      "instances": [
+        [
+          "instance": [
+            "name": "mysqlapp",
+            "type": "mysql"
           ],
-          "volumes": [
-            [
-              "vId": 509978,
-              "size": 20,
-              "maxIOPS": null,
-              "name": "root",
-              "rootVolume": true,
-              "storageType": 1,
-              "datastoreId": "autoCluster"
-            ]
-          ],
-          "storageControllers": [],
-          "config": [
-            "template": 509978,
-            "createUser": true,
-            "vmwareResourcePoolId": "resgroup-13049",
-            "vmwareFolderId": "group-v13599",
-            "expose": 8080
-          ],
-          "plan": [
-            "code": "vm-2048",
-            "id": 147
-          ],
-          "ports": [
-            [
-              "name": "",
-              "port": "",
-              "lb": ""
-            ]
-          ],
-          "metadata": [
-            [
-              "name": "",
-              "value": ""
-            ]
-          ],
-          "evars": [
-            [
-              "name": "",
-              "value": ""
+          "environments": [
+            "Dev": [
+              "groups": [
+                "VMware": [
+                  "clouds": [
+                    "VMware": [
+                      "backup": [
+                        "createBackup": true
+                      ],
+                      "instance": [
+                        "layout": [
+                          "code": "mysql-5.7-single",
+                          "id": 90
+                        ],
+                        "name": "",
+                        "allowExisting": true
+                      ],
+                      "volumes": [
+                        [
+                          "size": 1,
+                          "name": "root",
+                          "rootVolume": true
+                        ]
+                      ],
+                      "plan": [
+                        "code": "container-128",
+                        "id": 80
+                      ],
+                      "config": [
+                        "rootPassword": "************"
+                      ],
+                      "deployment": [
+                        "versionId": 42,
+                        "id": 29
+                      ],
+                      "workflow": [
+                        "taskSetId": 38
+                      ]
+                    ]
+                  ]
+                ]
+              ]
             ]
           ]
         ]
       ]
     ]
   ],
-  "name": "rhel-7.5-disa01",
-  "description": "DISA compliance test ",
-  "templateImage": "C:\\fakepath\\Screen Shot 2018-04-03 at 11.12.33 PM.png",
-  "category": "app",
-  "id": 108,
-  "templateName": "DISA",
-  "group": [
-    "id": 1,
-    "name": "VMware"
-  ],
-  "environment": "Demo"
-] 
+  "name": "nodexpressapp.170",
+  "templateImage": "",
+  "type": "morpheus",
+  "category": "APP"
+]
 
             echo morpheusApp.buildApp(morpheusUrl, postBody, "${bearer}")
         }
