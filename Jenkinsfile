@@ -43,7 +43,7 @@ node ('docker-slave') {
          *
          *  */
 
-           withCredentials([string(credentialsId: 'morphauthdemo', variable: 'bearer')]) {
+           withCredentials([string(credentialsId: 'sandboxauth', variable: 'bearer')]) {
             String morpheusUrl = 'https://sandbox.morpheusdata.com/api/apps'
 	    Map<?, ?> postBody = [
 
