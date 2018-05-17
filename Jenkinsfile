@@ -161,7 +161,7 @@ node ('docker-slave') {
       ]
     ]
   ],
-  "name": "nodexpressapp.170",
+  "name": "nodexpressapp" + "${env.BUILD_NUMBER}",
   "templateImage": "",
   "type": "morpheus",
   "category": "APP"]
