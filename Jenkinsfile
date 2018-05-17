@@ -45,9 +45,7 @@ node ('docker-slave') {
 
            withCredentials([string(credentialsId: 'sandboxauth', variable: 'bearer')]) {
             String morpheusUrl = 'https://sandbox.morpheusdata.com/api/apps'
-	    Map<?, ?> postBody = [
-
- "image": "/assets/apps/template.png",
+	    Map<?, ?> postBody = ["image": "/assets/apps/template.png",
   "tiers": [
     "App": [
       "linkedTiers": [],
@@ -166,8 +164,7 @@ node ('docker-slave') {
   "name": "nodexpressapp.170",
   "templateImage": "",
   "type": "morpheus",
-  "category": "APP"
-]
+  "category": "APP"]
 
             echo morpheusApp.buildApp(morpheusUrl, postBody, "${bearer}")
         }
