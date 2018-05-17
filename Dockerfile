@@ -14,7 +14,12 @@ RUN npm install mysql
 # RUN npm install --only=production
 
 # Bundle app source
-COPY . .
+COPY app.js .
+COPY bin/ ./bin/
+COPY package.json .
+COPY public/ ./public/
+COPY routes/ ./routes/
+COPY views ./views/
 
 
 CMD [ "npm", "start" ]
