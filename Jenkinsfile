@@ -6,11 +6,11 @@ node ('docker-slave') {
 
     stage('Provision Dev App') {
         /*
-         *
+         * 
          *  */
 
            withCredentials([string(credentialsId: 'sandboxauth', variable: 'bearer')]) {
-            String morpheusUrl = 'https://sandbox.morpheusdata.com/api/apps'
+            String morpheusUrl = 'https://sandbox.morpheusdata.com/api/app-templates'
 	    Map<?, ?> postBody =  
 
 [
