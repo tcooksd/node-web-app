@@ -81,7 +81,7 @@ node ('docker-slave') {
                           "code": "docker-1.7-single",
                           "id": 217
                         ],
-                        "name": "$[account]-$[cloudCode]-$[type]-$[sequence]"
+                        "name": ""
                       ],
                       "volumes": [
                         [
@@ -234,7 +234,7 @@ node ('docker-slave') {
                     "VMware": [
                       "instance": [
                         "allowExisting": false,
-                        "name": "$[account]-$[cloudCode]-$[type]-$[sequence]",
+                        "name": "",
                         "layout": [
                           "code": "mysql-5.7-single",
                           "id": 90
